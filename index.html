@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/jquery.2.0.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row total">
+            <div class="map">
+                <ul class="listing">
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                    <li>Eight</li>
+                </ul>
+            </div>
+            <div class="slider active">
+                <div class="block"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    $(document).ready(function(){
+        $('.block').on('click',function(){
+            $('.slider').toggleClass('active');
+        });
+
+        var showHide = function(pathParent, pathChild ){
+            $(pathParent).each(function () {
+            var LiN = $(this).find(pathChild).length;
+            if (LiN > 3) {
+                $(pathChild, this).eq(2).nextAll().hide().addClass('toggleable');
+                $(this).append('<btn class="btn btn-default-white showMore">SHOW MORE</li>');
+            }
+        });
+        $('btn.showMore').on('click', function () {
+            if ($(this).hasClass('less')) {
+                $(this).text('SHOW MORE').removeClass('less');
+            } else {
+                $(this).text('SHOW LESS').addClass('less');
+            }
+            $(this).siblings(pathChild+'.toggleable').slideToggle();
+        });
+        }; 
+        showHide('ul.listing','li');      
+    });
+        
+        
+        
+        
+    </script>
+</body>
+
+
+</html>
